@@ -6,6 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class EmpDAO {
 public static List<Emp> getDeptHeadFistName(String getFirstName) throws Exception {
 		
@@ -60,6 +62,135 @@ public static List<Emp> getEmpListByCountryName(String cityName) throws Exceptio
 	return result;
 	
 }
+public static Emp getEmpByFirstNLastName(String firstName, String lastName ) throws Exception {
+	//직원 이름으로 직원정보를검색할 수 있는가?
 
+	Connection conn = 
+			DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+	
+	String sql = "select * from employees where first_name = ? and last_name = ?";
+	
+	PreparedStatement stmt = conn.prepareStatement(sql);
+	stmt.setString(1, firstName);
+	stmt.setString(2, lastName);
+	
+	ResultSet rs = stmt.executeQuery();
+	Emp emp = new Emp();
+	
+	while(rs.next())
+	{	
+		emp.id = rs.getInt("employee_id");
+		emp.email = rs.getString("email");
+		emp.phone = rs.getString("phone_number");
+		emp.hire_date = rs.getString("hire_date");
+		emp.job_id = rs.getString("job_id");
+		emp.salary = rs.getInt("salary");
+
+	}
+	return emp;
+
+}
+//입사년도로 검색할 수 있는가?
+public static List<Emp> getEmpListByYear(int year) throws Exception {
+	List<Emp> result = new ArrayList<Emp>();
+	Connection conn = 
+			DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+	
+	Statement stmt = conn.createStatement();
+	String sql = "select * from employees where YEAR(hire_date) = " + year;
+	System.out.println("SQL: " + sql);
+	ResultSet rs = stmt.executeQuery(sql);
+	while(rs.next()) {
+		Emp emp = new Emp();
+		emp.id = rs.getInt("employee_id");
+		emp.id = rs.getInt("employee_id");
+		emp.email = rs.getString("email");
+		emp.phone = rs.getString("phone_number");
+		emp.hire_date = rs.getString("hire_date");
+		emp.job_id = rs.getString("job_id");
+		emp.salary = rs.getInt("salary");
+		result.add(emp);
+	}
+	return result;
+
+}
+
+//부서번호로 검색할 수 있는가?
+public static List<Emp> getEmpListBydepId(int depId) throws Exception {
+	List<Emp> result = new ArrayList<Emp>();
+	Connection conn = 
+			DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+	
+	Statement stmt = conn.createStatement();
+	String sql = "select * from employees where department_id =" + depId;
+	System.out.println("SQL: " + sql);
+	ResultSet rs = stmt.executeQuery(sql);
+	while(rs.next()) {
+		Emp emp = new Emp();
+		emp.id = rs.getInt("employee_id");
+		emp.id = rs.getInt("employee_id");
+		emp.email = rs.getString("email");
+		emp.phone = rs.getString("phone_number");
+		emp.hire_date = rs.getString("hire_date");
+		emp.job_id = rs.getString("job_id");
+		emp.salary = rs.getInt("salary");
+		result.add(emp);
+	}
+	return result;
+}
+//직무로 검색가능한가?
+	public static List<Emp> getEmpListByjobId(String jobId) throws Exception {
+		List<Emp> result = new ArrayList<Emp>();
+		Connection conn = 
+				DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+		
+		Statement stmt = conn.createStatement();
+		String sql =  "SELECT * FROM employees WHERE job_id = '" + jobId + "'";
+		System.out.println("SQL: " + sql);
+		ResultSet rs = stmt.executeQuery(sql);
+		while(rs.next()) {
+			Emp emp = new Emp();
+			emp.id = rs.getInt("employee_id");
+			emp.id = rs.getInt("employee_id");
+			emp.email = rs.getString("email");
+			emp.phone = rs.getString("phone_number");
+			emp.hire_date = rs.getString("hire_date");
+			emp.job_id = rs.getString("job_id");
+			emp.salary = rs.getInt("salary");
+			result.add(emp);
+		}
+		return result;
+
+	}
+	//도시이름으로 검색가능한가?
+			public static List<Emp> getEmpListBycityId(String cityId) throws Exception {
+				List<Emp> result = new ArrayList<Emp>();
+				Connection conn = 
+						DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+				
+				Statement stmt = conn.createStatement();
+				String sql =  "SELECT e.employee_id, e.email, e.phone_number, e.hire_date, e.job_id, e.salary " +
+			             "FROM employees e " +
+			             "JOIN departments d ON e.department_id = d.department_id " +
+			             "JOIN locations l ON d.location_id = l.location_id " +
+			             "WHERE l.city = '" + cityId + "'";
+				System.out.println("SQL: " + sql);
+				ResultSet rs = stmt.executeQuery(sql);
+				while(rs.next()) {
+					Emp emp = new Emp();
+					emp.id = rs.getInt("employee_id");
+					emp.email = rs.getString("email");
+					emp.phone = rs.getString("phone_number");
+					emp.hire_date = rs.getString("hire_date");
+					emp.job_id = rs.getString("job_id");
+					emp.salary = rs.getInt("salary");
+					emp.commission_pct = rs.getInt("commission_pct");
+					emp.manager_id = rs.getInt("manager_id");
+					emp.department_id = rs.getInt("department_id");
+					
+					result.add(emp);
+				}
+				return result;
+}
 
 }
