@@ -23,8 +23,8 @@ public static List<Emp> getDeptHeadFistName(String getFirstName) throws Exceptio
 		
 		while (rs.next()) {
 			Emp emp = new Emp();
-			emp.id = rs.getInt("employee_id");
 			emp.email = rs.getString("email");
+			emp.id = rs.getInt("employee_id");
 			emp.phone = rs.getString("phone_number");
 			emp.hire_date = rs.getString("hire_date");
 			emp.job_id = rs.getString("job_id");

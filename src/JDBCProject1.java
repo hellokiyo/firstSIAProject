@@ -6,8 +6,8 @@ public class JDBCProject1 {
 	public static void main(String[] args) throws Exception {
 		System.out.println("부서장의 성을 입력해주세요 : (종료 : 그만)");
 		Scanner scan = new Scanner(System.in);
-		String getFirstName	=scan.nextLine();
 		
+		String getFirstName	=scan.nextLine();
 		
 		while(getFirstName != "그만") { //입력받은 "getName값이 0이 아니다" 를 true값을 가진다면 계속 반복 // 키보드로 0을 입력했을경우 break;
 						

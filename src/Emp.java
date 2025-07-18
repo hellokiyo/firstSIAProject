@@ -8,12 +8,11 @@ public class Emp {
 	public int salary;
 	public String lastName;
 	public String countryName;
-	
+
 	@Override
 	public String toString() {
-		return "id=" + id + " email=" + email + ", phone=" + phone + ", hire_date=" + hire_date + ", job_id="
-				+ job_id + ", salary=" + salary + ", lastName=" + lastName + ", countryName=" + countryName;
+		
+		return id + "\t" + email + "\t" + phone + "\t" + hire_date + "\t" + job_id + "\t" + salary;
 	}
-	
-	
+
 }
