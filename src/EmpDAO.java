@@ -5,8 +5,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class EmpDAO {
+	
 public static List<Emp> getDeptHeadFistName(String getFirstName) throws Exception {
 		
 		List<Emp> result = new ArrayList<Emp>();
@@ -34,7 +36,11 @@ public static List<Emp> getDeptHeadFistName(String getFirstName) throws Exceptio
 		return result;
 	}
 
-public static List<Emp> getEmpListByCountryName(String cityName) throws Exception {
+public static List<Emp> getEmpListByCountryName() throws Exception {
+	
+	System.out.println("나라 이름 : ");
+	Scanner scan = new Scanner(System.in);
+	String countryName = scan.nextLine();
 	
 	// 나라 이름으로 그 나라에 근무하는 직원을 조회할 수 있는가
 	List<Emp> result = new ArrayList<Emp>();
@@ -58,6 +64,8 @@ public static List<Emp> getEmpListByCountryName(String cityName) throws Exceptio
 	}
 	
 	return result;
+	
+	
 	
 }
 
