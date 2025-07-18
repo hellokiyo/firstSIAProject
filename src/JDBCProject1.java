@@ -1,7 +1,6 @@
 import java.util.List;
 import java.util.Scanner;
 
-
 public class JDBCProject1 {
 
 	public static void main(String[] args) throws Exception {
