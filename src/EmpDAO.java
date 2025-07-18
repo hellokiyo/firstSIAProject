@@ -25,8 +25,8 @@ public static List<Emp> getDeptHeadFistName(String getFirstName) throws Exceptio
 		
 		while (rs.next()) {
 			Emp emp = new Emp();
-			emp.id = rs.getInt("employee_id");
 			emp.email = rs.getString("email");
+			emp.id = rs.getInt("employee_id");
 			emp.phone = rs.getString("phone_number");
 			emp.hire_date = rs.getString("hire_date");
 			emp.job_id = rs.getString("job_id");
@@ -66,7 +66,7 @@ public static Emp getEmpByFirstNLastName(String firstName, String lastName ) thr
 	//직원 이름으로 직원정보를검색할 수 있는가?
 
 	Connection conn = 
-			DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+			DriverManager.getConnection("jdbc:mysql://localhost:3306/newhr", "root", "rootroot");
 	
 	String sql = "select * from employees where first_name = ? and last_name = ?";
 	
@@ -94,7 +94,7 @@ public static Emp getEmpByFirstNLastName(String firstName, String lastName ) thr
 public static List<Emp> getEmpListByYear(int year) throws Exception {
 	List<Emp> result = new ArrayList<Emp>();
 	Connection conn = 
-			DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+			DriverManager.getConnection("jdbc:mysql://localhost:3306/newhr", "root", "rootroot");
 	
 	Statement stmt = conn.createStatement();
 	String sql = "select * from employees where YEAR(hire_date) = " + year;
@@ -119,7 +119,7 @@ public static List<Emp> getEmpListByYear(int year) throws Exception {
 public static List<Emp> getEmpListBydepId(int depId) throws Exception {
 	List<Emp> result = new ArrayList<Emp>();
 	Connection conn = 
-			DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+			DriverManager.getConnection("jdbc:mysql://localhost:3306/newhr", "root", "rootroot");
 	
 	Statement stmt = conn.createStatement();
 	String sql = "select * from employees where department_id =" + depId;
@@ -142,7 +142,7 @@ public static List<Emp> getEmpListBydepId(int depId) throws Exception {
 	public static List<Emp> getEmpListByjobId(String jobId) throws Exception {
 		List<Emp> result = new ArrayList<Emp>();
 		Connection conn = 
-				DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+				DriverManager.getConnection("jdbc:mysql://localhost:3306/newhr", "root", "rootroot");
 		
 		Statement stmt = conn.createStatement();
 		String sql =  "SELECT * FROM employees WHERE job_id = '" + jobId + "'";
@@ -166,7 +166,7 @@ public static List<Emp> getEmpListBydepId(int depId) throws Exception {
 			public static List<Emp> getEmpListBycityId(String cityId) throws Exception {
 				List<Emp> result = new ArrayList<Emp>();
 				Connection conn = 
-						DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
+						DriverManager.getConnection("jdbc:mysql://localhost:3306/newhr", "root", "rootroot");
 				
 				Statement stmt = conn.createStatement();
 				String sql =  "SELECT e.employee_id, e.email, e.phone_number, e.hire_date, e.job_id, e.salary " +
