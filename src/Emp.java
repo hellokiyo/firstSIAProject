@@ -11,6 +11,7 @@ public class Emp {
 	public double commission;
 	public int managerId;
 	public int departmentId;
+	
 	@Override
 	public String toString() {
 		return "Emp [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
