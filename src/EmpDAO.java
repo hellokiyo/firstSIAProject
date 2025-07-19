@@ -5,12 +5,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-
 
 public class EmpDAO {
-	
 public static List<Emp> getDeptHeadFistName(String getFirstName) throws Exception {
 		
 		List<Emp> result = new ArrayList<Emp>();
@@ -27,8 +23,8 @@ public static List<Emp> getDeptHeadFistName(String getFirstName) throws Exceptio
 		
 		while (rs.next()) {
 			Emp emp = new Emp();
-			emp.email = rs.getString("email");
 			emp.id = rs.getInt("employee_id");
+			emp.email = rs.getString("email");
 			emp.phone = rs.getString("phone_number");
 			emp.hire_date = rs.getString("hire_date");
 			emp.job_id = rs.getString("job_id");
@@ -38,11 +34,7 @@ public static List<Emp> getDeptHeadFistName(String getFirstName) throws Exceptio
 		return result;
 	}
 
-public static List<Emp> getEmpListByCountryName() throws Exception {
-	
-	System.out.println("나라 이름 : ");
-	Scanner scan = new Scanner(System.in);
-	String countryName = scan.nextLine();
+public static List<Emp> getEmpListByCountryName(String cityName) throws Exception {
 	
 	// 나라 이름으로 그 나라에 근무하는 직원을 조회할 수 있는가
 	List<Emp> result = new ArrayList<Emp>();
@@ -67,6 +59,7 @@ public static List<Emp> getEmpListByCountryName() throws Exception {
 	
 	return result;
 	
+<<<<<<< HEAD
 	
 	
 }
@@ -124,84 +117,9 @@ public static List<Emp> getEmpListByYear(int year) throws Exception {
 	}
 	return result;
 
+=======
+>>>>>>> e47ae052a8315287af373fdb610f3c83087368ef
 }
 
-//부서번호로 검색할 수 있는가?
-public static List<Emp> getEmpListBydepId(int depId) throws Exception {
-	List<Emp> result = new ArrayList<Emp>();
-	Connection conn = 
-			DriverManager.getConnection("jdbc:mysql://localhost:3306/newhr", "root", "rootroot");
-	
-	Statement stmt = conn.createStatement();
-	String sql = "select * from employees where department_id =" + depId;
-	System.out.println("SQL: " + sql);
-	ResultSet rs = stmt.executeQuery(sql);
-	while(rs.next()) {
-		Emp emp = new Emp();
-		emp.id = rs.getInt("employee_id");
-		emp.id = rs.getInt("employee_id");
-		emp.email = rs.getString("email");
-		emp.phone = rs.getString("phone_number");
-		emp.hire_date = rs.getString("hire_date");
-		emp.job_id = rs.getString("job_id");
-		emp.salary = rs.getInt("salary");
-		result.add(emp);
-	}
-	return result;
-}
-//직무로 검색가능한가?
-	public static List<Emp> getEmpListByjobId(String jobId) throws Exception {
-		List<Emp> result = new ArrayList<Emp>();
-		Connection conn = 
-				DriverManager.getConnection("jdbc:mysql://localhost:3306/newhr", "root", "rootroot");
-		
-		Statement stmt = conn.createStatement();
-		String sql =  "SELECT * FROM employees WHERE job_id = '" + jobId + "'";
-		System.out.println("SQL: " + sql);
-		ResultSet rs = stmt.executeQuery(sql);
-		while(rs.next()) {
-			Emp emp = new Emp();
-			emp.id = rs.getInt("employee_id");
-			emp.id = rs.getInt("employee_id");
-			emp.email = rs.getString("email");
-			emp.phone = rs.getString("phone_number");
-			emp.hire_date = rs.getString("hire_date");
-			emp.job_id = rs.getString("job_id");
-			emp.salary = rs.getInt("salary");
-			result.add(emp);
-		}
-		return result;
-
-	}
-	//도시이름으로 검색가능한가?
-			public static List<Emp> getEmpListBycityId(String cityId) throws Exception {
-				List<Emp> result = new ArrayList<Emp>();
-				Connection conn = 
-						DriverManager.getConnection("jdbc:mysql://localhost:3306/newhr", "root", "rootroot");
-				
-				Statement stmt = conn.createStatement();
-				String sql =  "SELECT e.employee_id, e.email, e.phone_number, e.hire_date, e.job_id, e.salary " +
-			             "FROM employees e " +
-			             "JOIN departments d ON e.department_id = d.department_id " +
-			             "JOIN locations l ON d.location_id = l.location_id " +
-			             "WHERE l.city = '" + cityId + "'";
-				System.out.println("SQL: " + sql);
-				ResultSet rs = stmt.executeQuery(sql);
-				while(rs.next()) {
-					Emp emp = new Emp();
-					emp.id = rs.getInt("employee_id");
-					emp.email = rs.getString("email");
-					emp.phone = rs.getString("phone_number");
-					emp.hire_date = rs.getString("hire_date");
-					emp.job_id = rs.getString("job_id");
-					emp.salary = rs.getInt("salary");
-					emp.commission_pct = rs.getInt("commission_pct");
-					emp.manager_id = rs.getInt("manager_id");
-					emp.department_id = rs.getInt("department_id");
-					
-					result.add(emp);
-				}
-				return result;
-}
 
 }
