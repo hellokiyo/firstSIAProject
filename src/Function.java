@@ -10,7 +10,7 @@ public class Function {
 	// 1. 직원이름으로 직원정보 검색
 	public void searchEmployeeByName() throws Exception {
 
-		System.out.print("직원이름 (종료는 0) : ");
+		System.out.print("직원이름 (ex. steven King, 종료는 0) : ");
 		String input = scan.nextLine();
 
 		String[] name = input.split(" ");
@@ -19,23 +19,17 @@ public class Function {
 		List<Emp> empList = new ArrayList<Emp>();
 
 		while (true) {
-			EmpDAO dao = new EmpDAO();
-
+			
 			if (input.equals("0")) {
 				break;
+				
 			} else {
 				System.out.println("직원 이름으로 직원 정보를 출력합니다.");
 				Emp emp = EmpDAO.getEmpByFirstNLastName(firstName, lastName);
 				empList.add(emp);
 
-				System.out.print("직원이름 : (ex : steven King)");
-
-				System.out.print("직원이름 : ");
-
+				System.out.print("직원이름 : (ex. steven King, 종료는 0)");				
 				input = scan.nextLine();
-				if (input.length() == 0) {
-					break;
-				}
 			}
 		}
 
@@ -43,15 +37,13 @@ public class Function {
 
 	// 2. 입사년도를 전달받아서 그 부서의 부서원정보를 출력함
 	public void searchEmployeeByHireYear() throws Exception {
-		
+
 		while (true) {
 			System.out.print("입사년도 입력 (종료는 0): ");
 			String input = scan.nextLine();
 
-			if (input.equals("0")) {
-				break;
-			}
-
+			if (input.equals("0")) break;
+			
 			try {
 				int year = Integer.parseInt(input);
 				List<Emp> empListByYear = EmpDAO.getEmpListByYear(year);
@@ -79,9 +71,7 @@ public class Function {
 			System.out.print("부서번호 입력 (종료는 0) : ");
 			String input = scan.nextLine();
 
-			if (input.equals("0")) {
-				break;
-			}
+			if (input.equals("0")) break;
 
 			try {
 				int depId = Integer.parseInt(input);
@@ -111,9 +101,7 @@ public class Function {
 			System.out.print("직무코드 입력 (종료는 0): ");
 			String jobId = scan.nextLine().trim();
 
-			if (jobId.equals("0")) {
-				break;
-			}
+			if (jobId.equals("0")) break;
 
 			try {
 				List<Emp> empListByjobId = EmpDAO.getEmpListByjobId(jobId.toUpperCase()); // 대문자로 맞춰줌
@@ -141,9 +129,7 @@ public class Function {
 			System.out.print("도시이름 입력 (종료는 0): ");
 			String city = scan.nextLine().trim();
 
-			if (city.equals("0")) {
-				break;
-			}
+			if (city.equals("0")) break;
 
 			try {
 				List<Emp> empListBycityName = EmpDAO.getEmpListBycityId(city.toUpperCase()); // 대문자로 맞춰줌
@@ -167,28 +153,28 @@ public class Function {
 	// 6. 부서장 성으로 부서원 검색
 	public void searchEmployeeByManagerLastName() throws Exception {
 
-		while(true) {
-			
+		while (true) {
+
 			System.out.printf("부서장의 성 입력 (종료는 0) : ");
 			String getFirstName = scan.nextLine();
-			
-			if(getFirstName.equals("0")) {
-				break;
-			}
 
-			System.out.println("입력한 부서장 성 : " + getFirstName);
-			List<Emp> empList = EmpDAO.getDeptHeadFistName(getFirstName);
+			if (getFirstName.equals("0")) break;
+			
+			try {				
+				System.out.println("입력한 부서장 성 : " + getFirstName);
+				List<Emp> empList = EmpDAO.getDeptHeadFistName(getFirstName);
 
 				for (Emp emp : empList) {
 					System.out.println(emp);
 				}
 				System.out.println("부서장 성이 " + getFirstName + "인 부서에서 근무하는 직원 수 : " + "명");
-				System.out.println("부서장 성 입력 (종료는 0) : ");
-				getFirstName = scan.nextLine();
-			
-			
+				
+			} catch () {
+				
+			}
+
 		}
-		
+
 	}
 
 	// 7. 나라이름으로 직원정보 검색
@@ -199,9 +185,7 @@ public class Function {
 			System.out.print("나라이름 (종료는 0) : ");
 			String country = scan.nextLine();
 
-			if(country.equals("0")) {
-				break;
-			}
+			if (country.equals("0")) break;
 
 			System.out.println("입력한 나라 이름 : " + country);
 			List<Emp> empList = EmpDAO.getEmpListByCountryName(country);
