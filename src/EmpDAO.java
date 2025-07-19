@@ -18,13 +18,13 @@ public class EmpDAO {
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 		
-		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
+		Connection conn = DriverManager.getConnection(props.getProperty("url"),
 				props.getProperty("userName"), props.getProperty("password"));
 		PreparedStatement stmt = conn.prepareStatement(props.getProperty("getEmpByFirstNLastName"));
 		stmt.setString(1, firstName);
 		stmt.setString(2, lastName);
 		ResultSet rs = stmt.executeQuery();
-
+		System.out.println("직원정보");
 		while (rs.next()) {
 			emp.employeeId = rs.getInt("employee_id");
 			emp.email = rs.getString("email");
@@ -36,8 +36,6 @@ public class EmpDAO {
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 		}
-		
-		
 		return emp;
 	}
 
@@ -58,8 +56,6 @@ public class EmpDAO {
 		while (rs.next()) {
 			Emp emp = new Emp();
 			emp.employeeId = rs.getInt("employee_id");
-			emp.firstName = rs.getString("first_name");
-			emp.lastName = rs.getString("last_name");
 			emp.email = rs.getString("email");
 			emp.phoneNo = rs.getString("phone_number");
 			emp.hireDate = rs.getString("hire_date");

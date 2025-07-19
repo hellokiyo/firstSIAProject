@@ -13,7 +13,6 @@ public class Function {
 		while (true) {
 			System.out.print("직원이름 (ex. steven King, 종료는 0) : ");
 			String input = scan.nextLine();
-
 			String[] name = input.split(" ");
 			String firstName = name[0];
 			String lastName = name[1];
@@ -26,9 +25,9 @@ public class Function {
 				System.out.println("직원 이름으로 직원 정보를 출력합니다.");
 				Emp emp = EmpDAO.getEmpByFirstNLastName(firstName, lastName);
 				empList.add(emp);
-				System.out.print("직원이름 : (ex : steven King)");
-				System.out.print("직원이름 : ");
-				System.out.print("직원이름 : (ex. steven King, 종료는 0)");				
+				for (Emp emplists : empList) {
+				    System.out.println(emplists);
+				}
 				input = scan.nextLine();
 			} catch (Exception e) {
 				System.out.println("오류 발생 : " + e.getMessage());
