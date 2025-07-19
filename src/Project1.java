@@ -18,8 +18,13 @@ public class Project1 {
 			System.out.println("5. 도시 별 직원정보 검색 기능");
 			System.out.println("6. 부서장 성 별 부서원 검색 기능");
 			System.out.println("7. 나라 별 근무하는 직원 검색 기능");
+<<<<<<< HEAD
 			System.out.println("종료를 원하면 '종료'라고 입력하세요.");
 			System.out.print("번호 입ㄴ력 : ");
+=======
+			System.out.println("8. 종료");
+			System.out.print("번호 입력 : ");
+>>>>>>> 935d77d2cb427a48b0df3e3e136d994ca60d3817
 			selectNo = scan1.nextInt();
 			
 			if(selectNo == 1) {
@@ -36,7 +41,7 @@ public class Project1 {
 				
 			} else if(selectNo == 7) {
 				EmpDAO.getEmpListByCountryName(null);
-			} else if(selectNo == "종료") {
+			} else if(selectNo == 8) {
 				System.out.println("프로그램 종료합니다");
 			} else {
 				System.out.println("메뉴에 없는 기능입니다. 다시 선택하십시오.");
