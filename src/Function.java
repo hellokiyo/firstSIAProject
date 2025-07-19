@@ -26,18 +26,12 @@ public class Function {
 				System.out.println("직원 이름으로 직원 정보를 출력합니다.");
 				Emp emp = EmpDAO.getEmpByFirstNLastName(firstName, lastName);
 				empList.add(emp);
-<<<<<<< HEAD
 				System.out.print("직원이름 : (ex : steven King)");
 				System.out.print("직원이름 : ");
 				System.out.print("직원이름 : (ex. steven King, 종료는 0)");				
-
-=======
-
-				System.out.print("직원이름 : (ex. steven King, 종료는 0)");
 				input = scan.nextLine();
 			} catch (Exception e) {
 				System.out.println("오류 발생 : " + e.getMessage());
->>>>>>> 19732d0c3b3a34fcb058dbe14e662861e46c3b4b
 			}
 		}
 
@@ -194,15 +188,11 @@ public class Function {
 					System.out.println(emp);
 				}
 				System.out.println("부서장 성이 " + getFirstName + "인 부서에서 근무하는 직원 수 : " + "명");
-<<<<<<< HEAD
 				
 			} catch (Exception e) {
 				System.out.println("오류 발생: " + e.getMessage());
-=======
 
-			} catch (Exception e) {
-				System.out.println("오류 발생 : " + e.getMessage());
->>>>>>> 19732d0c3b3a34fcb058dbe14e662861e46c3b4b
+
 			}
 
 		}
