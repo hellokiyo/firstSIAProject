@@ -16,15 +16,20 @@ public class Project1 {
 			System.out.println("5. 도시 별 직원정보 검색 기능");
 			System.out.println("6. 부서장 성 별 부서원 검색 기능");
 			System.out.println("7. 나라 별 근무하는 직원 검색 기능");
-			System.out.println("8. 종료");
+			System.out.println("종료를 원하면 '종료'라고 입력하세요.");
+			System.out.print("번호 입력 : ");
 
+			System.out.println("8. 종료");
 			System.out.print("번호 입력 : ");
 
 			selectNo = scan1.nextInt();
 			scan1.nextLine();
 			switch (selectNo) {
 			case 1:
+<<<<<<< HEAD
+=======
 				System.out.println("1번실행");
+>>>>>>> 47bfa5d15cce14e97743da379da8ed43f7a56dce
 				func.searchEmployeeByName();
 			case 2:
 				func.searchEmployeeByHireYear();
@@ -38,7 +43,11 @@ public class Project1 {
 				func.searchEmployeeByManagerLastName();
 			case 7:
 				func.searchEmployeeByCountry();
+<<<<<<< HEAD
+			case 8:
+=======
 			case 0:
+>>>>>>> 47bfa5d15cce14e97743da379da8ed43f7a56dce
 				System.out.println("프로그램 종료합니다");
 				break;
 			default:

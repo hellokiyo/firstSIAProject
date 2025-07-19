@@ -13,6 +13,7 @@ public class Function {
 		while (true) {
 			System.out.print("직원이름 (ex. steven King, 종료는 0) : ");
 			String input = scan.nextLine();
+
 			String[] name = input.split(" ");
 			String firstName = name[0];
 			String lastName = name[1];
@@ -25,10 +26,18 @@ public class Function {
 				System.out.println("직원 이름으로 직원 정보를 출력합니다.");
 				Emp emp = EmpDAO.getEmpByFirstNLastName(firstName, lastName);
 				empList.add(emp);
+<<<<<<< HEAD
+				
 				for (Emp emplists : empList) {
-				    System.out.println(emplists);
+					System.out.println(emplists);
 				}
+				
+=======
+				System.out.print("직원이름 : (ex : steven King)");
+				System.out.print("직원이름 : ");
+				System.out.print("직원이름 : (ex. steven King, 종료는 0)");				
 				input = scan.nextLine();
+>>>>>>> 47bfa5d15cce14e97743da379da8ed43f7a56dce
 			} catch (Exception e) {
 				System.out.println("오류 발생 : " + e.getMessage());
 			}
@@ -60,6 +69,9 @@ public class Function {
 					}
 					
 					System.out.println(empListByYear + "년도에 입사한 직원 수 : " + empListByYear.size() + "명 \n");
+<<<<<<< HEAD
+				}		
+=======
 				}
 				System.out.println("");
 				int input2 = scan.nextInt();
@@ -71,6 +83,7 @@ public class Function {
 						
 				}
 			
+>>>>>>> 47bfa5d15cce14e97743da379da8ed43f7a56dce
 				
 			} catch (NumberFormatException e) {
 				System.out.println("오류 발생 : " + e.getMessage());

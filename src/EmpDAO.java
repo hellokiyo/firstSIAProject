@@ -18,13 +18,17 @@ public class EmpDAO {
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 		
+<<<<<<< HEAD
 		Connection conn = DriverManager.getConnection(props.getProperty("url"),
+=======
+		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
+>>>>>>> 47bfa5d15cce14e97743da379da8ed43f7a56dce
 				props.getProperty("userName"), props.getProperty("password"));
 		PreparedStatement stmt = conn.prepareStatement(props.getProperty("getEmpByFirstNLastName"));
 		stmt.setString(1, firstName);
 		stmt.setString(2, lastName);
 		ResultSet rs = stmt.executeQuery();
-		System.out.println("직원정보");
+
 		while (rs.next()) {
 			emp.employeeId = rs.getInt("employee_id");
 			emp.email = rs.getString("email");
@@ -36,6 +40,8 @@ public class EmpDAO {
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 		}
+		
+		
 		return emp;
 	}
 
@@ -47,15 +53,21 @@ public class EmpDAO {
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
-		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
+		Connection conn = DriverManager.getConnection(props.getProperty("url"),
 				props.getProperty("userName"), props.getProperty("password"));
+<<<<<<< HEAD
+		PreparedStatement stmt1 = conn.prepareStatement(props.getProperty("getEmpListByYear"));
+=======
 		PreparedStatement stmt1 = conn.prepareStatement("getEmpListByYear");
+>>>>>>> 47bfa5d15cce14e97743da379da8ed43f7a56dce
 		stmt1.setInt(1, year);
 		ResultSet rs = stmt1.executeQuery();
 
 		while (rs.next()) {
 			Emp emp = new Emp();
 			emp.employeeId = rs.getInt("employee_id");
+			emp.firstName = rs.getString("first_name");
+			emp.lastName = rs.getString("last_name");
 			emp.email = rs.getString("email");
 			emp.phoneNo = rs.getString("phone_number");
 			emp.hireDate = rs.getString("hire_date");
@@ -77,9 +89,9 @@ public class EmpDAO {
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
-		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
+		Connection conn = DriverManager.getConnection(props.getProperty("url"),
 				props.getProperty("userName"), props.getProperty("password"));
-		PreparedStatement stmt = conn.prepareStatement("getEmpListBydepId");
+		PreparedStatement stmt = conn.prepareStatement(props.getProperty("getEmpListBydepId"));
 		stmt.setInt(1, depId);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
@@ -107,9 +119,9 @@ public class EmpDAO {
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
-		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
+		Connection conn = DriverManager.getConnection(props.getProperty("url"),
 				props.getProperty("userName"), props.getProperty("password"));
-		PreparedStatement stmt = conn.prepareStatement("getEmpListByjobId");
+		PreparedStatement stmt = conn.prepareStatement(props.getProperty("getEmpListByjobId"));
 		stmt.setString(1, jobId);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
@@ -138,9 +150,9 @@ public class EmpDAO {
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
-		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
+		Connection conn = DriverManager.getConnection(props.getProperty("url"),
 				props.getProperty("userName"), props.getProperty("password"));
-		PreparedStatement stmt = conn.prepareStatement("getEmpListBycityId");
+		PreparedStatement stmt = conn.prepareStatement(props.getProperty("getEmpListBycityId"));
 		stmt.setString(1, cityId);
 		ResultSet rs = stmt.executeQuery();
 		
@@ -170,9 +182,9 @@ public class EmpDAO {
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
-		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
+		Connection conn = DriverManager.getConnection(props.getProperty("url"),
 				props.getProperty("userName"), props.getProperty("password"));
-		PreparedStatement stmt = conn.prepareStatement("getDeptHeadFistName");
+		PreparedStatement stmt = conn.prepareStatement(props.getProperty("getDeptHeadFistName"));
 		stmt.setString(1, getFirstName);
 		ResultSet rs = stmt.executeQuery();
 
@@ -201,9 +213,9 @@ public class EmpDAO {
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
-		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
+		Connection conn = DriverManager.getConnection(props.getProperty("url"),
 				props.getProperty("userName"), props.getProperty("password"));
-		PreparedStatement stmt = conn.prepareStatement("getEmpListByCountryName");
+		PreparedStatement stmt = conn.prepareStatement(props.getProperty("getEmpListByCountryName"));
 		stmt.setString(1, cityName);
 		ResultSet rs = stmt.executeQuery();
 
