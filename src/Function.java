@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -34,14 +33,14 @@ public class Function {
 				if (input.length() == 0) {
 					break;
 				}
-			}	
+			}
 		}
-		
+
 	}
 
 	// 2. 입사년도를 전달받아서 그 부서의 부서원정보를 출력함
 	public void searchEmployeeByHireYear() throws Exception {
-		
+
 		while (true) {
 			System.out.print("입사년도 입력 (종료는 0): ");
 			String input = scan.nextLine();
@@ -67,12 +66,12 @@ public class Function {
 				System.out.println("입사년도를 숫자로 정확히 입력하세요.\n");
 			}
 		}
-		
+
 	}
 
 	// 3. 부서번호를 전달받아서 그 부서의 부서원정보를 리턴함
 	public void searchEmployeeByDeptNo() throws Exception {
-		
+
 		while (true) {
 			System.out.print("부서번호 입력 (종료는 0) : ");
 			String input = scan.nextLine();
@@ -92,18 +91,19 @@ public class Function {
 					for (Emp emp : empListBydepId) {
 						System.out.println(emp);
 					}
-					System.out.println("부서번호가 " + empListBydepId + "인 부서에 근무하는 직원 수 " + empListBydepId.size() + "명 .\n");
+					System.out
+							.println("부서번호가 " + empListBydepId + "인 부서에 근무하는 직원 수 " + empListBydepId.size() + "명 .\n");
 				}
 			} catch (NumberFormatException e) {
 				System.out.println("입사년도를 숫자로 정확히 입력하세요.\n");
 			}
 		}
-		
+
 	}
 
 	// 4. 직무를 전달받아서 그 부서의 부서원정보를 리턴함
 	public void searchEmployeeByJobId() {
-		
+
 		while (true) {
 			System.out.print("직무코드 입력 (종료는 0): ");
 			String jobId = scan.nextLine().trim();
@@ -134,7 +134,7 @@ public class Function {
 			}
 
 		}
-		
+
 	}
 
 	// 5. 도시이름을 전달받아서 그 부서의 부서원정보를 리턴함
@@ -146,12 +146,6 @@ public class Function {
 			if (city.equals("0")) {
 				break;
 			}
-
-			if (city.length() == 0) {
-				System.out.println("도시이름을 입력해주세요.\n");
-				continue;
-			}
-
 			try {
 				List<Emp> empListBycityName = EmpDAO.getEmpListBycityId(city.toUpperCase()); // 대문자로 맞춰줌
 
@@ -162,7 +156,8 @@ public class Function {
 					for (Emp emp : empListBycityName) {
 						System.out.println(emp);
 					}
-					System.out.println("도시이름이 " + empListBycityName + "인 도시에서 근무하는 직원 수 : " + empListBycityName.size() + "명 .\n");
+					System.out.println(
+							"도시이름이 " + empListBycityName + "인 도시에서 근무하는 직원 수 : " + empListBycityName.size() + "명 .\n");
 				}
 			} catch (Exception e) {
 				System.out.println("오류 발생: " + e.getMessage());
@@ -172,40 +167,52 @@ public class Function {
 
 	// 6. 부서장 성으로 부서원 검색
 	public void searchEmployeeByManagerLastName() throws Exception {
-		
-		System.out.printf("부서장의 성 입력 : ");
-		String getFirstName = scan.nextLine();
 
-		while (!getFirstName.equals(0)) { // 입력받은 "getName값이 0이 아니다" 를 true값을 가진다면 계속 반복 // 키보드로 0을 입력했을경우 break;
-			System.out.println("입력한 부서장 성 : " + getFirstName);
-			List<Emp> empList = EmpDAO.getDeptHeadFistName(getFirstName); // db접속
-
-			for (Emp emp : empList) {
-				System.out.println(emp);
+		while(true) {
+			
+			System.out.printf("부서장의 성 입력 (종료는 0) : ");
+			String getFirstName = scan.nextLine();
+			
+			if(getFirstName.equals("0")) {
+				break;
 			}
-			System.out.println("부서장 성이 " + getFirstName + "인 부서에서 근무하는 직원 수 : " + "명");
-			System.out.println("부서장 성 입력 (종료는 0) : ");
-			getFirstName = scan.nextLine();
+
+			System.out.println("입력한 부서장 성 : " + getFirstName);
+			List<Emp> empList = EmpDAO.getDeptHeadFistName(getFirstName);
+
+				for (Emp emp : empList) {
+					System.out.println(emp);
+				}
+				System.out.println("부서장 성이 " + getFirstName + "인 부서에서 근무하는 직원 수 : " + "명");
+				System.out.println("부서장 성 입력 (종료는 0) : ");
+				getFirstName = scan.nextLine();
+			
+			
 		}
+		
 	}
 
 	// 7. 나라이름으로 직원정보 검색
 	public void searchEmployeeByCountry() throws Exception {
-		
-		System.out.print("나라이름 : ");
-		String country = scan.nextLine();
 
-		while (!country.equals(0)) {
+		while (true) {
+
+			System.out.print("나라이름 (종료는 0) : ");
+			String country = scan.nextLine();
+
+			if(country.equals("0")) {
+				break;
+			}
+
 			System.out.println("입력한 나라 이름 : " + country);
 			List<Emp> empList = EmpDAO.getEmpListByCountryName(country);
-			
+
 			for (Emp emp : empList) {
 				System.out.println(emp);
 			}
 			System.out.println(country + "에서 근무하는 직원 수 : " + empList.size() + "명");
-			System.out.print("cityName (종료는 0) :");
-			country = scan.nextLine();
 		}
+
 	}
 
 }

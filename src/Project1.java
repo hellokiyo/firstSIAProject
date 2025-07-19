@@ -20,7 +20,7 @@ public class Project1 {
 			System.out.println("7. 나라 별 근무하는 직원 검색 기능");
 
 			System.out.println("종료를 원하면 '종료'라고 입력하세요.");
-			System.out.print("번호 입ㄴ력 : ");
+			System.out.print("번호 입력 : ");
 
 			System.out.println("8. 종료");
 			System.out.print("번호 입력 : ");
