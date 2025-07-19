@@ -18,8 +18,13 @@ public class Project1 {
 			System.out.println("5. 도시 별 직원정보 검색 기능");
 			System.out.println("6. 부서장 성 별 부서원 검색 기능");
 			System.out.println("7. 나라 별 근무하는 직원 검색 기능");
+<<<<<<< HEAD
 			System.out.println("종료를 원하면 '종료'라고 입력하세요.");
+			System.out.print("번호 입ㄴ력 : ");
+=======
+			System.out.println("8. 종료");
 			System.out.print("번호 입력 : ");
+>>>>>>> 935d77d2cb427a48b0df3e3e136d994ca60d3817
 			selectNo = scan1.nextInt();
 			
 			if(selectNo == 1) {
@@ -36,7 +41,7 @@ public class Project1 {
 				
 			} else if(selectNo == 7) {
 				EmpDAO.getEmpListByCountryName(null);
-			} else if(selectNo == "종료") {
+			} else if(selectNo == 8) {
 				System.out.println("프로그램 종료합니다");
 			} else {
 				System.out.println("메뉴에 없는 기능입니다. 다시 선택하십시오.");
@@ -60,7 +65,19 @@ public class Project1 {
 			List<Emp> empList = EmpDAO.getEmpListByCountryName(countryName);
 			System.out.printf("%1s\t %15s\t %13s\t %15s\t %10s\t \n", "country_name", "empolyee_id", "last_name", "phone_number", "salary");
 			for (Emp emp : empList) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6436a77f6d6cbb49e03dcb598d0da0df7a8c42c
+
 				System.out.printf("%5s\t %15s\t %15s\t %20s\t %8s\t \n", emp.countryName, emp.id, emp.lastName, emp.phone, emp.salary);
+
+
+				System.out.printf("%5s\t %15s\t %15s\t %20s\t %8s\t \n", emp.countryName, emp.id, emp.lastName, emp.phone, emp.salary);
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6436a77f6d6cbb49e03dcb598d0da0df7a8c42c
 			}
 			System.out.println(countryName + "에서 근무하는 직원 수 : " + empList.size() + "명");
 			System.out.print("cityName(종료하려면 엔터를 누르세요.) :");
