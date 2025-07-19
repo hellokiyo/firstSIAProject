@@ -66,7 +66,7 @@ public static Emp getEmpByFirstNLastName(String firstName, String lastName ) thr
 	//직원 이름으로 직원정보를검색할 수 있는가?
 
 	Connection conn = 
-			DriverManager.getConnection("jdbc:mysql://localhost:3306/newhr", "root", "rootroot");
+			DriverManager.getConnection("jdbc:mysql://localhost:3307/newhr", "root", "rootroot");
 	
 	String sql = "select * from employees where first_name = ? and last_name = ?";
 	
@@ -85,6 +85,9 @@ public static Emp getEmpByFirstNLastName(String firstName, String lastName ) thr
 		emp.hire_date = rs.getString("hire_date");
 		emp.job_id = rs.getString("job_id");
 		emp.salary = rs.getInt("salary");
+		emp.commission = rs.getInt("commission_pct");
+		emp.manager_id = rs.getInt("manager_id");
+		emp.department_id = rs.getInt("department_id");
 
 	}
 	return emp;
