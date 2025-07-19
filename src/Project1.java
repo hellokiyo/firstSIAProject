@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Scanner;
 
 public class Project1 {
@@ -16,34 +15,35 @@ public class Project1 {
 			System.out.println("5. 도시 별 직원정보 검색 기능");
 			System.out.println("6. 부서장 성 별 부서원 검색 기능");
 			System.out.println("7. 나라 별 근무하는 직원 검색 기능");
-
 			System.out.println("종료를 원하면 '종료'라고 입력하세요.");
-			System.out.print("번호 입ㄴ력 : ");
+			System.out.print("번호 입력 : ");
 
 			System.out.println("8. 종료");
 			System.out.print("번호 입력 : ");
 
-			selectNo = scan1.nextInt();
 			
-			if(selectNo == 1) {
-				
-			} else if(selectNo == 2) {
-				
-			} else if(selectNo == 3) {
-				
-			} else if(selectNo == 4) {
-				
-			} else if(selectNo == 5) {
-				
-			} else if(selectNo == 6) {
-				
-			} else if(selectNo == 7) {
-				EmpDAO.getEmpListByCountryName(null);
-			} else if(selectNo == 8) {
-				System.out.println("프로그램 종료합니다");
-			} else {
-				System.out.println("메뉴에 없는 기능입니다. 다시 선택하십시오.");
+			
+			selectNo = scan1.nextInt();
+			switch (selectNo) {
+				case 1:
+					EmpDAO.getEmpListByYear(0);
+				case 2:
+					
+				case 3:
+				case 4:
+				case 5:
+				case 6:
+				case 7:
+					EmpDAO.getEmpListByCountryName(null);
+					
+				case 8:
+					
+				case 0:
+					System.out.println("프로그램 종료합니다");
+				default :
+					System.out.println("메뉴에 없는 기능입니다. 다시 선택하십시오.");			
 			}
+			
 			
 		}
 		

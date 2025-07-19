@@ -14,15 +14,16 @@ public class EmpDAO {
 	// 1번 문제 : 직원 이름으로 직원정보를검색할 수 있는가?
 	public static Emp getEmpByFirstNLastName(String firstName, String lastName) throws Exception {
 		Emp emp = new Emp();
+		
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
+		
 		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
 				props.getProperty("userName"), props.getProperty("password"));
 		PreparedStatement stmt = conn.prepareStatement(props.getProperty("getEmpByFirstNLastName"));
-		ResultSet rs = stmt.executeQuery();
-
 		stmt.setString(1, firstName);
 		stmt.setString(2, lastName);
+		ResultSet rs = stmt.executeQuery();
 
 		while (rs.next()) {
 			emp.employeeId = rs.getInt("employee_id");
@@ -35,6 +36,8 @@ public class EmpDAO {
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 		}
+		
+		
 		return emp;
 	}
 
@@ -48,9 +51,9 @@ public class EmpDAO {
 
 		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
 				props.getProperty("userName"), props.getProperty("password"));
-		PreparedStatement stmt = conn.prepareStatement("getEmpListByYear");
-		stmt.setInt(1, year);
-		ResultSet rs = stmt.executeQuery();
+		PreparedStatement stmt1 = conn.prepareStatement("getEmpListByYear");
+		stmt1.setInt(1, year);
+		ResultSet rs = stmt1.executeQuery();
 
 		while (rs.next()) {
 			Emp emp = new Emp();
@@ -67,6 +70,7 @@ public class EmpDAO {
 			emp.departmentId = rs.getInt("department_id");
 			result.add(emp);
 		}
+		
 		return result;
 	}
 
@@ -143,6 +147,8 @@ public class EmpDAO {
 		PreparedStatement stmt = conn.prepareStatement("getEmpListBycityId");
 		stmt.setString(1, cityId);
 		ResultSet rs = stmt.executeQuery();
+		
+		
 		while (rs.next()) {
 			Emp emp = new Emp();
 			emp.employeeId = rs.getInt("employee_id");

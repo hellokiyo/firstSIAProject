@@ -2,10 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 15487d219d1f4a8e6d1e4afaad1857ba4a19b106
 // 기능 클래스 (사용자에게 입력받고, 정보를 출력해주는 기능을 구현)
 public class Function {
 
@@ -31,11 +27,11 @@ public class Function {
 				System.out.println("직원 이름으로 직원 정보를 출력합니다.");
 				Emp emp = EmpDAO.getEmpByFirstNLastName(firstName, lastName);
 				empList.add(emp);
-<<<<<<< HEAD
+
 				System.out.print("직원이름 : (ex : steven King)");
-=======
+
 				System.out.print("직원이름 : ");
->>>>>>> 15487d219d1f4a8e6d1e4afaad1857ba4a19b106
+
 				input = scan.nextLine();
 				if (input.length() == 0) {
 					break;
@@ -50,24 +46,37 @@ public class Function {
 		while (true) {
 			System.out.print("입사년도 입력 (종료는 0): ");
 			String input = scan.nextLine();
+			int year = Integer.parseInt(input);
 
 			if (input.equals("0")) {
 				break;
 			}
 
 			try {
-				int year = Integer.parseInt(input);
 				List<Emp> empListByYear = EmpDAO.getEmpListByYear(year);
 
 				if (empListByYear.isEmpty()) {
 					System.out.println(year + "년에 입사한 직원이 없습니다.\n");
 				} else {
 					System.out.println(year + "년에 입사한 직원 목록:");
+					
 					for (Emp emp : empListByYear) {
 						System.out.println(emp);
 					}
+					
 					System.out.println(empListByYear + "년도에 입사한 직원 수 : " + empListByYear.size() + "명 \n");
 				}
+				System.out.println("");
+				int input2 = scan.nextInt();
+				
+				switch (input2) { 
+					case 1:
+						List<Emp> YearsOfService = Aggregate.getYearsOfService(year);
+						break;
+						
+				}
+			
+				
 			} catch (NumberFormatException e) {
 				System.out.println("입사년도를 숫자로 정확히 입력하세요.\n");
 			}

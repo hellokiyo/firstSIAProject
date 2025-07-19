@@ -1,4 +1,3 @@
-
 public class Emp {
 	public int employeeId;
 	public String firstName;
