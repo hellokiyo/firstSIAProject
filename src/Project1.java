@@ -1,15 +1,56 @@
 import java.util.List;
 import java.util.Scanner;
 
-// 나라이름으로 그 나라에 근무하는 직원을 조회할 수 있는가?
 public class Project1 {
 	public static void main(String[] args) throws Exception {
+		
+		Scanner scan1 = new Scanner(System.in);
+		int selectNo = -1;
+		
+		while(selectNo != 0) {
+			System.out.println("heemancompany 직원정보 조회 시스템");
+			System.out.println("1. 직원 이름을 통한 직원정보 검색 기능");
+			System.out.println("2. 입사년도 별 직원정보 검색 기능");
+			System.out.println("3. 부서번호 별 직원정보 검색 기능");
+			System.out.println("4. 직무 별 직원정보 검색 기능");
+			System.out.println("5. 도시 별 직원정보 검색 기능");
+			System.out.println("6. 부서장 성 별 부서원 검색 기능");
+			System.out.println("7. 나라 별 근무하는 직원 검색 기능");
+			System.out.println("종료를 원하면 '종료'라고 입력하세요.");
+			System.out.print("번호 입력 : ");
+			selectNo = scan1.nextInt();
+			
+			if(selectNo == 1) {
+				
+			} else if(selectNo == 2) {
+				
+			} else if(selectNo == 3) {
+				
+			} else if(selectNo == 4) {
+				
+			} else if(selectNo == 5) {
+				
+			} else if(selectNo == 6) {
+				
+			} else if(selectNo == 7) {
+				EmpDAO.getEmpListByCountryName();
+			} else if(selectNo == "종료") {
+				System.out.println("프로그램 종료합니다");
+			} else {
+				System.out.println("메뉴에 없는 기능입니다. 다시 선택하십시오.");
+			}
+			
+		}
+		
+		
+		
+		
 		
 		System.out.print("나라이름 : ");
 		
 		// 나라이름 입력 받기
-		Scanner scan = new Scanner(System.in);
-		String countryName = scan.nextLine();
+		Scanner scan2 = new Scanner(System.in);
+		String countryName = scan2.nextLine();
 		
 		// 직원정보 전달받아서 그 나라의 직원이름 리턴
 		while(countryName != null && countryName.length() !=0 ) {
@@ -18,10 +59,13 @@ public class Project1 {
 			System.out.printf("%1s\t %15s\t %13s\t %15s\t %10s\t \n", "country_name", "empolyee_id", "last_name", "phone_number", "salary");
 			System.out.printf("%5s\t %15s\t %15s\t %20s\t %8s\t \n", emp.countryName, emp.id, emp.lastName, emp.phoneNumber, emp.salary);
 			for (Emp emp : empList) {
+
+				System.out.printf("%5s\t %15s\t %15s\t %20s\t %8s\t \n", emp.countryName, emp.id, emp.lastName, emp.phone, emp.salary);
+
 			}
 			System.out.println(countryName + "에서 근무하는 직원 수 : " + empList.size() + "명");
 			System.out.print("cityName(종료하려면 엔터를 누르세요.) :");
-			countryName = scan.nextLine();
+			countryName = scan2.nextLine();
 		}
 	}
 }
