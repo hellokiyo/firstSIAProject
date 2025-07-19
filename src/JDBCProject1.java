@@ -9,7 +9,7 @@ public class JDBCProject1 {
 		
 		String getFirstName	=scan.nextLine();
 		
-		while(getFirstName != "그만") { //입력받은 "getName값이 0이 아니다" 를 true값을 가진다면 계속 반복 // 키보드로 0을 입력했을경우 break;
+		while(getFirstName != " ") { //입력받은 "getName값이 0이 아니다" 를 true값을 가진다면 계속 반복 // 키보드로 0을 입력했을경우 break;
 						
 			List<Emp> empList = EmpDAO.getDeptHeadFistName(getFirstName); //db접속
 			
