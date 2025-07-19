@@ -5,8 +5,9 @@ public class Project1 {
 		
 		Scanner scan1 = new Scanner(System.in);
 		int selectNo = -1;
+		Function func = new Function();
 		
-		while(selectNo != 0) {
+		while(selectNo != 8) {
 			System.out.println("heemancompany 직원정보 조회 시스템");
 			System.out.println("1. 직원 이름을 통한 직원정보 검색 기능");
 			System.out.println("2. 입사년도 별 직원정보 검색 기능");
@@ -21,31 +22,32 @@ public class Project1 {
 			System.out.println("8. 종료");
 			System.out.print("번호 입력 : ");
 
-			
-			
 			selectNo = scan1.nextInt();
+			scan1.nextLine();
 			switch (selectNo) {
-				case 1:
-					EmpDAO.getEmpListByYear(0);
-				case 2:
-					
-				case 3:
-				case 4:
-				case 5:
-				case 6:
-				case 7:
-					EmpDAO.getEmpListByCountryName(null);
-					
-				case 8:
-					
-				case 0:
-					System.out.println("프로그램 종료합니다");
-				default :
-					System.out.println("메뉴에 없는 기능입니다. 다시 선택하십시오.");			
-			}
-			
-			
-		}
+			case 1:
+				System.out.println("1번실행");
+				func.searchEmployeeByName();
+			case 2:
+				func.searchEmployeeByHireYear();
+			case 3:
+				func.searchEmployeeByDeptNo();
+			case 4:
+				func.searchEmployeeByJobId();
+			case 5:
+				func.searchEmployeeByCity();
+			case 6:
+				func.searchEmployeeByManagerLastName();
+			case 7:
+				func.searchEmployeeByCountry();
+			case 0:
+				System.out.println("프로그램 종료합니다");
+				break;
+			default:
+				System.out.println("메뉴에 없는 기능입니다. 다시 선택하십시오.");
+			}			
+		} scan1.close();
+
 		
 	}
 }
