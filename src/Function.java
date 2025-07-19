@@ -1,11 +1,7 @@
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import project.Emp;
-import project.EmpDAO;
 
 // 기능 클래스 (사용자에게 입력받고, 정보를 출력해주는 기능을 구현)
 public class Function {
@@ -32,7 +28,6 @@ public class Function {
 				System.out.println("직원 이름으로 직원 정보를 출력합니다.");
 				Emp emp = EmpDAO.getEmpByFirstNLastName(firstName, lastName);
 				empList.add(emp);
-				System.out.println(empList.getLast());
 				System.out.print("직원이름 : (ex : steven King)");
 				input = scan.nextLine();
 				if (input.length() == 0) {
@@ -45,7 +40,6 @@ public class Function {
 
 	// 2. 입사년도를 전달받아서 그 부서의 부서원정보를 출력함
 	public void searchEmployeeByHireYear() throws Exception {
-		
 		while (true) {
 			System.out.print("입사년도 입력 (ex.2017): ");
 			String input = scan.nextLine();
@@ -116,11 +110,6 @@ public class Function {
 				break;
 			}
 
-			if (jobId.length() == 0) {
-				System.out.println("직무코드를 입력해주세요.\n");
-				continue;
-			}
-
 			try {
 				List<Emp> empListByjobId = EmpDAO.getEmpListByjobId(jobId.toUpperCase()); // 대문자로 맞춰줌
 
@@ -149,11 +138,6 @@ public class Function {
 
 			if (city.equals("0")) {
 				break;
-			}
-
-			if (city.length() == 0) {
-				System.out.println("도시이름을 입력해주세요.\n");
-				continue;
 			}
 
 			try {

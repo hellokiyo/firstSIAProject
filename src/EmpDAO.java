@@ -8,16 +8,14 @@ import java.util.List;
 import java.util.Properties;
 
 public class EmpDAO {
-	// 1번 문제 : 직원 이름으로 직원정보를검색할 수 있는가?
-	static Emp emp = new Emp();
 	static Properties props = new Properties();
 	static FileReader fr;
 
+	// 1번 문제 : 직원 이름으로 직원정보를검색할 수 있는가?
 	public static Emp getEmpByFirstNLastName(String firstName, String lastName) throws Exception {
-
+		Emp emp = new Emp();
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
-
 		Connection conn = DriverManager.getConnection(props.getProperty("driverClassName"),
 				props.getProperty("userName"), props.getProperty("password"));
 		PreparedStatement stmt = conn.prepareStatement(props.getProperty("getEmpByFirstNLastName"));
@@ -28,14 +26,12 @@ public class EmpDAO {
 
 		while (rs.next()) {
 			emp.employeeId = rs.getInt("employee_id");
-			emp.firstName = rs.getString("first_name");
-			emp.lastName = rs.getString("last_name");
 			emp.email = rs.getString("email");
 			emp.phoneNo = rs.getString("phone_number");
 			emp.hireDate = rs.getString("hire_date");
 			emp.jobId = rs.getString("job_id");
 			emp.salary = rs.getInt("salary");
-			emp.commission = rs.getInt("commission_pct");
+			emp.commission = rs.getDouble("commission_pct");
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 		}
@@ -46,7 +42,7 @@ public class EmpDAO {
 	// 2번 문제 : 입사년도로 검색할 수 있는가?
 	public static List<Emp> getEmpListByYear(int year) throws Exception {
 		List<Emp> result = new ArrayList<Emp>();
-		
+
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
@@ -57,6 +53,7 @@ public class EmpDAO {
 		ResultSet rs = stmt.executeQuery();
 
 		while (rs.next()) {
+			Emp emp = new Emp();
 			emp.employeeId = rs.getInt("employee_id");
 			emp.firstName = rs.getString("first_name");
 			emp.lastName = rs.getString("last_name");
@@ -65,7 +62,7 @@ public class EmpDAO {
 			emp.hireDate = rs.getString("hire_date");
 			emp.jobId = rs.getString("job_id");
 			emp.salary = rs.getInt("salary");
-			emp.commission = rs.getInt("commission_pct");
+			emp.commission = rs.getDouble("commission_pct");
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 			result.add(emp);
@@ -76,7 +73,7 @@ public class EmpDAO {
 	// 3번 문제 부서번호로 검색할 수 있는가?
 	public static List<Emp> getEmpListBydepId(int depId) throws Exception {
 		List<Emp> result = new ArrayList<Emp>();
-		
+
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
@@ -86,6 +83,7 @@ public class EmpDAO {
 		stmt.setInt(1, depId);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
+			Emp emp = new Emp();
 			emp.employeeId = rs.getInt("employee_id");
 			emp.firstName = rs.getString("first_name");
 			emp.lastName = rs.getString("last_name");
@@ -94,7 +92,7 @@ public class EmpDAO {
 			emp.hireDate = rs.getString("hire_date");
 			emp.jobId = rs.getString("job_id");
 			emp.salary = rs.getInt("salary");
-			emp.commission = rs.getInt("commission_pct");
+			emp.commission = rs.getDouble("commission_pct");
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 			result.add(emp);
@@ -105,7 +103,7 @@ public class EmpDAO {
 	// 4번 문제 : 직무로 검색가능한가?
 	public static List<Emp> getEmpListByjobId(String jobId) throws Exception {
 		List<Emp> result = new ArrayList<Emp>();
-		
+
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
@@ -115,6 +113,7 @@ public class EmpDAO {
 		stmt.setString(1, jobId);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
+			Emp emp = new Emp();
 			emp.employeeId = rs.getInt("employee_id");
 			emp.firstName = rs.getString("first_name");
 			emp.lastName = rs.getString("last_name");
@@ -123,7 +122,7 @@ public class EmpDAO {
 			emp.hireDate = rs.getString("hire_date");
 			emp.jobId = rs.getString("job_id");
 			emp.salary = rs.getInt("salary");
-			emp.commission = rs.getInt("commission_pct");
+			emp.commission = rs.getDouble("commission_pct");
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 			result.add(emp);
@@ -135,7 +134,7 @@ public class EmpDAO {
 	// 5번 문제 : 도시이름으로 직원정보 검색
 	public static List<Emp> getEmpListBycityId(String cityId) throws Exception {
 		List<Emp> result = new ArrayList<Emp>();
-		
+
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
@@ -145,6 +144,7 @@ public class EmpDAO {
 		stmt.setString(1, cityId);
 		ResultSet rs = stmt.executeQuery();
 		while (rs.next()) {
+			Emp emp = new Emp();
 			emp.employeeId = rs.getInt("employee_id");
 			emp.firstName = rs.getString("first_name");
 			emp.lastName = rs.getString("last_name");
@@ -153,7 +153,7 @@ public class EmpDAO {
 			emp.hireDate = rs.getString("hire_date");
 			emp.jobId = rs.getString("job_id");
 			emp.salary = rs.getInt("salary");
-			emp.commission = rs.getInt("commission_pct");
+			emp.commission = rs.getDouble("commission_pct");
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 			result.add(emp);
@@ -164,7 +164,7 @@ public class EmpDAO {
 	// 6번 문제 : 부서장 성으로 부서원 검색
 	public static List<Emp> getDeptHeadFistName(String getFirstName) throws Exception {
 		List<Emp> result = new ArrayList<Emp>();
-		
+
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
@@ -175,6 +175,7 @@ public class EmpDAO {
 		ResultSet rs = stmt.executeQuery();
 
 		while (rs.next()) {
+			Emp emp = new Emp();
 			emp.employeeId = rs.getInt("employee_id");
 			emp.firstName = rs.getString("first_name");
 			emp.lastName = rs.getString("last_name");
@@ -183,7 +184,7 @@ public class EmpDAO {
 			emp.hireDate = rs.getString("hire_date");
 			emp.jobId = rs.getString("job_id");
 			emp.salary = rs.getInt("salary");
-			emp.commission = rs.getInt("commission_pct");
+			emp.commission = rs.getDouble("commission_pct");
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 			result.add(emp);
@@ -194,7 +195,7 @@ public class EmpDAO {
 	// 7번 문제 : 나라이름으로 직원조회
 	public static List<Emp> getEmpListByCountryName(String cityName) throws Exception {
 		List<Emp> result = new ArrayList<Emp>();
-		
+
 		fr = new FileReader("db-info.properties");
 		props.load(fr);
 
@@ -205,6 +206,7 @@ public class EmpDAO {
 		ResultSet rs = stmt.executeQuery();
 
 		while (rs.next()) {
+			Emp emp = new Emp();
 			emp.employeeId = rs.getInt("employee_id");
 			emp.firstName = rs.getString("first_name");
 			emp.lastName = rs.getString("last_name");
@@ -213,7 +215,7 @@ public class EmpDAO {
 			emp.hireDate = rs.getString("hire_date");
 			emp.jobId = rs.getString("job_id");
 			emp.salary = rs.getInt("salary");
-			emp.commission = rs.getInt("commission_pct");
+			emp.commission = rs.getDouble("commission_pct");
 			emp.managerId = rs.getInt("manager_id");
 			emp.departmentId = rs.getInt("department_id");
 			result.add(emp);
