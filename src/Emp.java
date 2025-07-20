@@ -10,12 +10,34 @@ public class Emp {
 	public double commission;
 	public int managerId;
 	public int departmentId;
-	
-	@Override
+
+	@Override // 객체 정보를 보기 좋게 문자열로 만들어주는 메서드 (toString 오버라이딩)
+
 	public String toString() {
-		return "Emp [employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", email="
-				+ email + ", phoneNo=" + phoneNo + ", hireDate=" + hireDate + ", jobId=" + jobId + ", salary=" + salary
-				+ ", commission=" + commission + ", managerId=" + managerId + ", departmentId=" + departmentId + "]";
+		return String.format("%-4d %-10s %-15s %-12s %-15s %-12s %-10s %8d %10.2f", employeeId, firstName, lastName,
+				email, phoneNo, hireDate.substring(0, 10), jobId, salary, commission);
 	}
+
+	public static void printCoulumnName() {
+		System.out.printf("%-4s %-10s %-15s %-12s %-15s %-12s %-10s %8s %10s\n", "ID", "FirstName", "LastName", "Email",
+				"Phone", "HireDate", "JobID", "Salary", "Commission");
+	}
+
+	public String toStringFirstNLastName() {
+	    return String.format(
+	        "%-4d %-10s %-15s %-12s %-10s %8d %10.2f %10d %10d",
+	        employeeId, email, phoneNo,
+	        hireDate.substring(0, 10), jobId, salary, commission, managerId, departmentId
+	    );
+	}
+
+	public static void printCoulumnFirstNLastName() {
+	    System.out.printf(
+	        "%-4s %-10s %-15s %-12s %-10s %8s %10s %10s %10s\n",
+	        "ID", "Email", "Phone", "HireDate",
+	        "JobID", "Salary", "Commission", "ManagerID", "DeptID"
+	    );
+	}
+
 
 }
